@@ -24,30 +24,32 @@ When dependency values change, useEffect re-runs the function and updates the da
 
 ### `Dependencies + useCallback`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: For when you need async**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+When one of your dependencies is a function that you want to extract and re-use elsewhere. You can also make it async if it is not inside of useEffect.
+
+`useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. This helps prevent unnecessary renders.
 
 ### `Custom Fetch Hook`
 
-This section has moved here: 
+Here we extract and create a custom hook that we can use anywhere in our React App to fetch data.
 
 ### `Loading State`
 
-This section has moved here:
+Even though it doesn't take much time to call the custom Fetch Hook and map the data to the DOM, it is a good plan to include a "loading" state for slower connections.
 
 ### `Error Handling`
 
-This section has moved here:
+We need ways to handle errors and log details on these errors in order to troubleshoot.  Try Catch blocks are great for this.
 
 ### `Cleanup Functions`
 
-This section has moved here: 
+When we asynchronously try to update state in a component after it's unmounted, we need a cleanup because there can be memory leaks.
 
-### `Halting Fetch Requests`
+### `Aborting Fetch Requests`
 
-This section has moved here: 
+In your useEffect you need to abort all async functions and subscriptions to data streams. You use a standard javascript `AbortController()` and pass it into the fetch request.
 
 ### `useEffect Suprises`
 
-This section has moved here: 
+If an object is a reference type and used in a dependency array like in useEffect, they trigger an infinite loop. So you need to use the `useRef` hook inside the custom hook.
