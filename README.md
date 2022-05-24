@@ -4,25 +4,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Fetching Data + useEffect
 
-In the project directory, you can run:
+For Data, I added JSON Server to allow us to replicate a database using a local JSON file. It wraps that JSON file with API endpoints which we can then use to Fetch Data and interact with that Data.
 
 ### `Why useEffect`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To fetch the data cleanly, we use the `useEffect` hook to prevent an infinite loop of data fetching/updating state. `useEffect` is a hook that allows us to perform *side effects*: data fetching, subscriptions, or manual DOM changes from React components within functional components.
 
 ### `Fetching Data with useEffect`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When our component is initially evaluated, `useEffect` will run our function inside of itas the first argument. Then we can perform *side effects*, like data fetching, and then update the state inside useEffect. When the component is re-evaluated, and the function re-runs, useEffect will only run if it's dependencies have changed value.
+
+An empty dependency array at the end of useEffect means the function is only going to run once at the start because it has no dependencies. 
+
+`useEffect` invokes a callback after initial mounting, and on later renderings, if a value inside the dependencies has changed.
 
 ### `The Dependency Array`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When dependency values change, useEffect re-runs the function and updates the data. This allows us to have different endpoints for different queries and update them. For example, a button that onClick displays trips in Canada, and another button that displays all USA trips.
 
 ### `Dependencies + useCallback`
 

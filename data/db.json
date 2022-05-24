@@ -1,0 +1,28 @@
+{
+  "trips": [
+    {
+      "title": "2 Night Stay in Montreal",
+      "price": "$195",
+      "id": "1",
+      "loc": "canada"
+    },
+    {
+      "title": "3 Night Stay in Banff",
+      "price": "$295",
+      "id": "2",
+      "loc": "canada"
+    },
+    {
+      "title": "4 Night Stay in Hawaii",
+      "price": "$345",
+      "id": "3",
+      "loc": "usa"
+    },
+    {
+      "title": "3 Night Stay in New York",
+      "price": "$325",
+      "id": "4",
+      "loc": "usa"
+    }
+  ]
+}
